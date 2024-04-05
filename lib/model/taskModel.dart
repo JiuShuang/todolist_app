@@ -7,6 +7,7 @@ class TaskModel {
   final String endTime;
   final String remindTime;
   final int taskColors;
+  final int? taskStatue;
 
   TaskModel({
     required this.taskID,
@@ -17,6 +18,7 @@ class TaskModel {
     required this.endTime,
     required this.remindTime,
     required this.taskColors,
+    required this.taskStatue
   });
 
   TaskModel.fromJson(Map<String, dynamic> json)
@@ -27,7 +29,8 @@ class TaskModel {
         startTime = json['startTime'],
         endTime = json['endTime'],
         remindTime = json['remindTime'],
-        taskColors = json['taskColors'];
+        taskColors = json['taskColors'],
+        taskStatue= json['taskStatue'];
 
 
 
@@ -39,7 +42,8 @@ class TaskModel {
       'startTime':startTime,
       'endTime':endTime,
       "remindTime":remindTime,
-      "taskColors":taskColors
+      "taskColors":taskColors,
+      "taskStatue":taskStatue
   };
 
 }

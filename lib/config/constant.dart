@@ -29,7 +29,7 @@ var titleTextStyle=GoogleFonts.lato(
     textStyle: const TextStyle(
         color: Colors.white,
         fontWeight: FontWeight.bold,
-        fontSize: 20
+        fontSize: 23
     )
 );
 

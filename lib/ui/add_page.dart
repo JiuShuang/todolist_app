@@ -4,15 +4,12 @@ import 'package:todolist_app/config/constant.dart';
 import 'package:intl/intl.dart';
 import 'package:todolist_app/controller/taskController.dart';
 import 'package:todolist_app/model/taskModel.dart';
-import 'package:todolist_app/service/taskService.dart';
 
 class AddPage extends StatelessWidget {
   const AddPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-
-    print("创建页面AddPage");
 
     final TextEditingController titleController=TextEditingController();
     final TextEditingController noteController=TextEditingController();
@@ -65,7 +62,9 @@ class AddPage extends StatelessWidget {
                         startTime:startController.text,
                         endTime:endController.text,
                         remindTime:remindController.text,
-                        taskColors:selectColors.value);
+                        taskColors:selectColors.value,
+                        taskStatue:1
+                    );
                     taskController.addTask(taskModel);
                   },
                   icon: const Icon(Icons.add),

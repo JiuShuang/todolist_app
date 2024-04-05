@@ -26,13 +26,13 @@ class DBUtil{
                   "startTime text,"
                   "endTime text,"
                   "remindTime text,"
-                  "taskColors integer)"
+                  "taskColors integer,"
+                  "taskStatue integer)"
           );
       }
     );
 
   }
-
 
 
   static Future<int> insert(TaskModel taskModel) async{
@@ -50,7 +50,7 @@ class DBUtil{
     return await _database.query("task");
   }
 
-  static Future deleteByID(int taskID) async{
+  static Future deleteByID(int? taskID) async{
     log("删除数据:$taskID",time: DateTime.now());
     return await _database.delete(_tableName,where: "taskID=?",whereArgs: [taskID]);
   }

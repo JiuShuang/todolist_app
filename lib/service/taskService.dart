@@ -8,22 +8,27 @@ import 'package:todolist_app/model/taskModel.dart';
 class TaskService{
 
   static Future getTasks() async{
+    List<TaskModel> tasksList=[];
     List<Map<String,dynamic>> tasks=await DBUtil.queryAll();
-    TaskController.taskList.assignAll(tasks.map((e) => TaskModel.fromJson(e)).toList());
-    print("taskService执行getTasks,时间为:${DateTime.now()}");
+    tasksList.assignAll(tasks.map((e) => TaskModel.fromJson(e)).toList());
+    return tasksList;
   }
 
- static Future addTask(TaskModel taskModel) async{
+  static Future addTask(TaskModel taskModel) async{
     return await DBUtil.insert(taskModel);
   }
 
-  Future deleteTask(int taskID) async{
+  static Future deleteTask(int? taskID) async{
     return await DBUtil.deleteByID(taskID);
   }
 
-  Future getTaskByID(int taskID) async{
+  static Future getTaskByID(int taskID) async{
     TaskModel taskModel=TaskModel.fromJson(await DBUtil.queryByID(taskID));
     return taskModel;
+  }
+
+  static Future setFinish(TaskModel taskModel) async{
+    await DBUtil.updateByID(taskModel);
   }
 
 
